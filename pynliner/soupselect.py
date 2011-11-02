@@ -79,6 +79,8 @@ def select(soup, selector):
             tag, id = token.split('#', 1)
             if not tag:
                 tag = True
+            if not current_context:
+                return [] # No contexts
             el = current_context[0].find(tag, {'id': id})
             if not el:
                 return [] # No match
