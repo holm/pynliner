@@ -210,6 +210,10 @@ class Pynliner(object):
             else:
                 elem['style'] = style.cssText.replace('\n', ' ')
 
+        # Remove class attributes
+        for elm in self.soup.findAll(attrs={"class": True}):
+            del elm['class']
+
     def _get_output(self):
         """Generate Unicode string of `self.soup` and set it to `self.output`
 
